@@ -1,0 +1,48 @@
+{
+  "name": "@typedly/property",
+  "version": "0.0.1",
+  "author": "wwwdev.io <dev@wwwdev.io>",
+  "description": "A TypeScript type definitions package to handle object property-related operations.",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  },
+  "devDependencies": {},
+  "peerDependencies": {},
+  "scripts": {
+    "prepublishOnly": "npm install rimraf && npm run pkg && npm run clean",
+    "pkg": "npm pkg delete module fesm2022 dependencies",
+    "clean": "./node_modules/rimraf/dist/esm/bin.mjs ./fesm2022 ./node_modules && npm pkg delete scripts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/typedly/property.git"
+  },
+  "bugs": {
+    "url": "https://github.com/typedly/property/issues"
+  },
+  "keywords": [
+    "@typedly",
+    "@typedly/property",
+    "Add",
+    "DeepAdd",
+    "DeepPick",
+    "Get",
+    "PickByType",
+    "Remove",
+    "Set",
+    "Update"
+  ],
+  "funding": [
+    {
+      "type": "stripe",
+      "url": "https://donate.stripe.com/dR614hfDZcJE3wAcMM"
+    },
+    {
+      "type": "revolut",
+      "url": "https://checkout.revolut.com/pay/048b10a3-0e10-42c8-a917-e3e9cb4c8e29"
+    }
+  ],
+  "sideEffects": false
+}
