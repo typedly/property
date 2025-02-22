@@ -24,6 +24,7 @@ A **TypeScript** type definitions package to handle object property-related oper
   - [`DeepPick`](#deeppick)
   - [`Get`](#get)
   - [`PickByType`](#pickbytype)
+  - `Property` namespace
   - [`Remove`](#remove)
   - [`Set`](#set)
   - [`Update`](#update)
@@ -50,6 +51,7 @@ import {
   DeepPick,
   Get,
   PickByType,
+  Property, // namespace
   Remove,
   Set,
   Update
