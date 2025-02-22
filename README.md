@@ -316,12 +316,14 @@ MIT © typedly ([license][typedly-license])
 
 ## Packages
 
+- **[@typedly/array](https://github.com/typedly/array)**: A **TypeScript** type definitions package to handle array-related operations.
 - **[@typedly/callback](https://github.com/typedly/callback)**: A **TypeScript** type definitions package for asynchronous and synchronous callback functions of various types.
 - **[@typedly/character](https://github.com/typedly/character)**: A **TypeScript** type definitions package for various character types.
 - **[@typedly/context](https://github.com/typedly/context)**: A **TypeScript** type definitions package for context data structures.
 - **[@typedly/descriptor](https://github.com/typedly/descriptor)**: A **TypeScript** type definitions package for property descriptor.
 - **[@typedly/digit](https://github.com/typedly/digit)**: A **TypeScript** type definitions package for digit types.
 - **[@typedly/letter](https://github.com/typedly/letter)**: A **TypeScript** type definitions package for handling letter types.
+- **[@typedly/object](https://github.com/typedly/object)**: A **TypeScript** type definitions package to handle object-related operations.
 - **[@typedly/payload](https://github.com/typedly/payload)**: A **TypeScript** type definitions package for payload data structures.
 - **[@typedly/regexp](https://github.com/typedly/regexp)**: A **TypeScript** type definitions package for `RegExp`.
 - **[@typedly/symbol](https://github.com/typedly/symbol)**: A **TypeScript** type definitions package for various symbols.
