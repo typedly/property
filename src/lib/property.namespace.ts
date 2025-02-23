@@ -16,6 +16,37 @@ declare global {
   export namespace Typedly {
 
     export namespace Property {
+      export namespace Deep {
+        /**
+         * @description Adds the property to the nested(deep) path, where the path is a string of dot-separated keys.
+         * If the path points to an existing object, it will continue the recursion to add the value at the next level. 
+         * If the path points to a non-existent key, the type will create a new property at that location. 
+         * This allows for deeply nested object manipulation at compile-time, providing a way to safely define nested properties.
+         * @export
+         * @template {object} Obj The type of the object to which the property should be added.
+         * @template {string} Path The path within the object, specified as a dot-separated string.
+         * @template Value The type of the value to be added at the specified path.
+         * @example
+         * type Example1 = DeepAdd<{ user: { name: string } }, 'user.age', number>;
+         * // type Example1 = { user: { name: string; } & { age: number; }; }
+         * type Example2 = DeepAdd<{ user: { address: { city: string } } }, 'user.address.zipcode', string>;
+         * // type Example2 = { user: { address: { city: string; } & { zipcode: string; }; }; }
+         */
+        export type Add<Obj extends object, Path extends string, Value> = _DeepAdd<Obj, Path, Value>
+
+        /**
+         * @description Picks specified nested properties from an object.
+         * @export
+         * @template Obj The object type.
+         * @template Names The list of properties to pick.
+         * @example
+         * const object = { user: { name: 'Someone', address: { city: 'London', zip: '12345' } } } as const;
+         * type Picked = DeepPick<typeof object, 'user.name'>;
+         */
+        export type Pick<Obj extends object, Path extends string> = _DeepPick<Obj, Path>
+
+      }
+
       /**
        * @description Adds the property to the object.
        * @export
@@ -30,34 +61,6 @@ declare global {
       // export type Add<Obj extends object, Name extends PropertyKey, Value, Optional extends boolean = false, C extends Config = typeof Configuration> = C['Add'] extends infer Captured ? Captured : never;
       export type Add<Obj extends object, Name extends PropertyKey, Value, Optional extends boolean = false> = _Add<Obj, Name, Value, Optional>;
 
-      /**
-       * @description Adds the property to the nested(deep) path, where the path is a string of dot-separated keys.
-       * If the path points to an existing object, it will continue the recursion to add the value at the next level. 
-       * If the path points to a non-existent key, the type will create a new property at that location. 
-       * This allows for deeply nested object manipulation at compile-time, providing a way to safely define nested properties.
-       * @export
-       * @template {object} Obj The type of the object to which the property should be added.
-       * @template {string} Path The path within the object, specified as a dot-separated string.
-       * @template Value The type of the value to be added at the specified path.
-       * @example
-       * type Example1 = DeepAdd<{ user: { name: string } }, 'user.age', number>;
-       * // type Example1 = { user: { name: string; } & { age: number; }; }
-       * type Example2 = DeepAdd<{ user: { address: { city: string } } }, 'user.address.zipcode', string>;
-       * // type Example2 = { user: { address: { city: string; } & { zipcode: string; }; }; }
-       */
-      export type DeepAdd<Obj extends object, Path extends string, Value> = _DeepAdd<Obj, Path, Value>
-    
-      /**
-       * @description Picks specified nested properties from an object.
-       * @export
-       * @template Obj The object type.
-       * @template Names The list of properties to pick.
-       * @example
-       * const object = { user: { name: 'Someone', address: { city: 'London', zip: '12345' } } } as const;
-       * type Picked = DeepPick<typeof object, 'user.name'>;
-       */
-      export type DeepPick<Obj extends object, Path extends string> = _DeepPick<Obj, Path>
-    
       /**
        * @description Retrieves the type of a specified property from an `Obj`.
        * @export
