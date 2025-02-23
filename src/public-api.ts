@@ -18,3 +18,6 @@ export type {
   Set,
   Update
 } from './lib';
+
+// Namespace.
+export * from './lib/typedly.namespace';
