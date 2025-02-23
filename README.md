@@ -22,9 +22,15 @@ A **TypeScript** type definitions package to handle object property-related oper
   - [`Add`](#add)
   - [`DeepAdd`](#deepadd)
   - [`DeepPick`](#deeppick)
+  - [`DeepRemove`](#deepremove)
   - [`Get`](#get)
+
   - [`PickByType`](#pickbytype)
-  - `Property` namespace
+  - [`PickWithOptional`](#pickwithoptional)
+  - [`PickWithReadonly`](#pickwithreadonly)
+  - [`PickWithRenaming`](#pickwithrenaming)
+  - [`PickWithTransform`](#pickwithtransform)
+
   - [`Remove`](#remove)
   - [`Set`](#set)
   - [`Update`](#update)
@@ -47,11 +53,17 @@ npm install @typedly/property --save-peer
 ```typescript
 import {
   Add,
-  DeepAdd,
-  DeepPick,
+  DeepAdd, // Typedly.Property.Deep.Add
+  DeepPick, // Typedly.Property.Deep.Pick
+  DeepRemove, // Typedly.Property.Deep.Remove
+
   Get,
-  PickByType,
-  Property, // namespace
+  PickByType,  // Typedly.Property.Pick.By.Type
+  PickWithOptional, // Typedly.Property.Pick.With.Optional
+  PickWithReadonly, // Typedly.Property.Pick.With.Readonly
+  PickWithRenaming, // Typedly.Property.Pick.With.Renaming
+  PickWithTransform, // Typedly.Property.Pick.With.Transform
+
   Remove,
   Set,
   Update
@@ -185,6 +197,33 @@ type Example1 = DeepPick<typeof object, 'user.name'>;
 */
 ```
 
+### `DeepRemove`
+
+```typescript
+import { DeepRemove } from '@typedly/property';
+
+// Example 1: Removing a nested property
+type Example1 = DeepRemove<{
+  user: {
+    address: {
+      city: string;
+      zip: string;
+    };
+    name: string;
+  };
+}, 'user.address.zip'>;
+
+// Expected Result:
+// {
+//   user: {
+//     address: {
+//       city: string;
+//     };
+//     name: string;
+//   };
+// }
+```
+
 ### `Get`
 
 ```typescript
@@ -205,6 +244,46 @@ import { PickByType } from '@typedly/property';
 const object = { firstName: 'Someone', age: 227, city: 'London' } as const;
 type PickedString = PickByType<typeof object, string>;
 // Result: { firstName: "Someone", city: "London" }
+```
+
+### `PickWithOptional`
+
+```typescript
+import { PickWithOptional } from '@typedly/property';
+
+const object = { firstName: 'Someone', lastName: 'Someone surname', age: 227 } as const;
+type Picked1 = PickWithOptional<typeof object, 'firstName'>; // firstName?: "Someone"
+type Picked2 = Typedly.Property.Pick.With.Optional<typeof object, 'firstName'>; // firstName?: "Someone"
+```
+
+### `PickWithReadonly`
+
+```typescript
+import { PickWithReadonly } from '@typedly/property';
+
+const object = { firstName: 'Someone', lastName: 'Someone surname', age: 227 } as const;
+type ReadonlyPick = PickWithReadonly<typeof object, 'firstName'>;
+// Result: { readonly firstName: "Someone" }
+```
+
+### `PickWithRenaming`
+
+```typescript
+import { PickWithRenaming } from '@typedly/property';
+
+const object = { firstName: 'Someone', lastName: 'Someone surname' };
+type RenamedPick = PickWithRenaming<typeof object, 'firstName', { firstName: 'firstNameRenamed' }>;
+// Result: { firstNameRenamed: "Someone", lastName: "Someone surname" }
+```
+
+### `PickWithTransform`
+
+```typescript
+import { PickWithTransform } from '@typedly/property';
+
+const object = { firstName: 'Someone', lastName: 'Someone surname' };
+type TransformedPick = PickWithTransform<typeof object, 'firstName', (val: string) => number>;
+// Result: { firstName: number }
 ```
 
 ### `Remove`
