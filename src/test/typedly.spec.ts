@@ -1,4 +1,3 @@
-// type Example1 = Typedly.Property.Add<{ firstName: 'a', surName: 'b' }, 'city', 'London'>;
 type Example1 = Typedly.Property.Add<{ firstName: 'a', surName: 'b' }, 'city', 'London', false>;
 // type Example1 = {
 //   firstName: "a";
