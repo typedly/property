@@ -8,7 +8,6 @@ export type {
   DeepPick,
   Get,
   PickByType,
-  Property, // namespace
   Remove,
   Set,
   Update
