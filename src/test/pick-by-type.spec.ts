@@ -20,7 +20,7 @@ type PickedNumbers = PickByType<Example, number>;
 */
 
 // Pick only properties of type `boolean`
-type PickedBooleans = PickByType<Example, boolean>;
+type PickedBooleans = Typedly.Property.Pick.By.Type<Example, boolean>;
 /*
 {
   isActive: boolean;

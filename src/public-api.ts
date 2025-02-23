@@ -1,14 +1,19 @@
 /*
  * Public API Surface of property
  */
-
 export type {
   Add,
-  DeepAdd,
-  DeepPick,
+  DeepAdd, // Typedly.Property.Deep.Add
+  DeepPick, // Typedly.Property.Deep.Pick
+  DeepRemove, // Typedly.Property.Deep.Remove
+
   Get,
-  PickByType,
-  Property, // namespace
+  PickByType,  // Typedly.Property.Pick.By.Type
+  PickWithOptional, // Typedly.Property.Pick.With.Optional
+  PickWithReadonly, // Typedly.Property.Pick.With.Readonly
+  PickWithRenaming, // Typedly.Property.Pick.With.Renaming
+  PickWithTransform, // Typedly.Property.Pick.With.Transform
+
   Remove,
   Set,
   Update

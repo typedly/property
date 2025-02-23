@@ -1,9 +1,13 @@
 export type { Add } from './add.type';
 export type { DeepAdd } from './deep-add.type';
 export type { DeepPick } from './deep-pick.type';
+export type { DeepRemove } from './deep-remove.type';
 export type { Get } from './get.type';
 export type { PickByType } from './pick-by-type.type';
-export type { Property } from './property.namespace';
+export type { PickWithOptional } from './pick-with-optional.type';
+export type { PickWithReadonly } from './pick-with-readonly.type';
+export type { PickWithRenaming } from './pick-with-renaming.type';
+export type { PickWithTransform } from './pick-with-transform.type';
 export type { Remove } from './remove.type';
 export type { Set } from './set.type';
 export type { Update } from './update.type';

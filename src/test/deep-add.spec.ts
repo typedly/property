@@ -9,7 +9,7 @@ type Example2 = DeepAdd<{ user: { address: { city: string } } }, 'user.address.z
 type Profile = { user: { name: string } };
 
 // Adding a new nested property
-type Example3 = DeepAdd<Profile, 'user.age', number>;
+type Example3 = Typedly.Property.Deep.Add<Profile, 'user.age', number>;
 /*
   type Example3 = {
     user: {

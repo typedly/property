@@ -30,7 +30,7 @@ type UserWithDetails = {
 type PickedUserName = DeepPick<UserWithDetails, 'userInfo.name'>;
 // Resulting type: { userInfo: { name: string; }; }
 
-type PickedUserCountry = DeepPick<UserWithDetails, 'userInfo.address.country.name'>;
+type PickedUserCountry = Typedly.Property.Deep.Pick<UserWithDetails, 'userInfo.address.country.name'>;
 // Resulting type: { userInfo: { address: { country: { name: string; }; }; }; }
 
 type PickedPreferences = DeepPick<UserWithDetails, 'preferences.theme'>;
