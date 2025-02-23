@@ -12,7 +12,7 @@ type Example1 = Add<typeof object, 'city', 'London'>;
   }
 */
 
-type Example2 = Add<typeof object, 'city', 'London', true>;
+type Example2 = Typedly.Property.Add<typeof object, 'city', 'London', true>;
 /*
   type Example2 = {
     readonly firstName: "Someone";
