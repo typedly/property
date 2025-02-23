@@ -1,5 +1,3 @@
-import '../lib/property.namespace';
-
 // type Example1 = Typedly.Property.Add<{ firstName: 'a', surName: 'b' }, 'city', 'London'>;
 type Example1 = Typedly.Property.Add<{ firstName: 'a', surName: 'b' }, 'city', 'London', false>;
 // type Example1 = {
@@ -29,10 +27,10 @@ type Example5 = Typedly.Property.Update<{name: string | 'a'}, 'name', 'b'>;
 type Example6 = Typedly.Property.PickByType<{name: 'a', age: 1}, string>;
 // type Example6 = { name: "a"; }
 
-type Example7 = Typedly.Property.Deep.Add<{user: {adress: {city: 'a'}}}, 'user.adress.zip', '123'>;
+type Example7 = Typedly.Property.Deep.Add<{user: {address: {city: 'a'}}}, 'user.address.zip', '123'>;
 // type Example7 = {
 //   user: {
-//       adress: {
+//       address: {
 //           city: "a";
 //       } & {
 //           zip: "123";
@@ -40,5 +38,5 @@ type Example7 = Typedly.Property.Deep.Add<{user: {adress: {city: 'a'}}}, 'user.a
 //   };
 // }
 
-type Example8 = Typedly.Property.Deep.Pick<{user: {adress: {city: 'a', zip: '123'}}}, 'user.adress.city'>;
-// type Example8 = { user: { adress: { city: "a"; }; }; }
+type Example8 = Typedly.Property.Deep.Pick<{user: {address: {city: 'a', zip: '123'}}}, 'user.address.city'>;
+// type Example8 = { user: { address: { city: "a"; }; }; }
