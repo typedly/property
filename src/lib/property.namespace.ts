@@ -5,8 +5,13 @@ import {
   Add as _Add,
   DeepAdd as _DeepAdd,
   DeepPick as _DeepPick,
+  DeepRemove as _DeepRemove,
   Get as _Get,
   PickByType as _PickByType,
+  PickWithOptional as _PickWithOptional,
+  PickWithReadonly as _PickWithReadonly,
+  PickWithRenaming as _PickWithRenaming,
+  PickWithTransform as _PickWithTransform,
   Remove as _Remove,
   Set as _Set,
   Update as _Update,
@@ -45,6 +50,35 @@ declare global {
          */
         export type Pick<Obj extends object, Path extends string> = _DeepPick<Obj, Path>
 
+        /**
+         * @description Removes the nested properties.
+         * @export
+         * @template {object} Obj The object to remove nested properties.
+         * @template {string} Path The path to remove.
+         */
+        export type Remove<Obj extends object, Path extends string> = _DeepRemove<Obj, Path>;
+      }
+
+      export namespace Pick {
+        export namespace By {
+          /**
+           * @description Picks the properties of the given type.
+           * @export
+           * @template {object} Obj The object to pick properties.
+           * @template Type The type of property values to pick.
+           * @example
+           * const object = { firstName: 'Someone', age: 227, city: 'London' } as const;
+           * type PickedString = PickByType<typeof object, string>; // Result: { firstName: "Someone", city: "London" }
+           */
+          export type Type<Obj extends object, Type>  = _PickByType<Obj, Type>
+        }
+
+        export namespace With {
+          export type Optional<Obj extends object, Names extends keyof Obj> = _PickWithOptional<Obj, Names>;
+          export type Readonly<Obj extends object, Names extends keyof Obj> = _PickWithReadonly<Obj, Names>;
+          export type Renaming<Obj extends object, Names extends keyof Obj, Rename extends Record<string, string>> = _PickWithRenaming<Obj, Names, Rename>;
+          export type Transform<Obj extends object, Names extends keyof Obj, Transform extends (val: Obj[Names]) => any> = _PickWithTransform<Obj, Names, Transform>;  
+        }
       }
 
       /**
@@ -82,7 +116,7 @@ declare global {
        * type PickedString = PickByType<typeof object, string>; // Result: { firstName: "Someone", city: "London" }
        */
       export type PickByType<Obj extends object, Type>  = _PickByType<Obj, Type>
-    
+
       /**
        * @description Removes a property from an object type and ensures the final type is partially resolved.
        * @export
@@ -93,7 +127,7 @@ declare global {
        * type Removed = Remove<typeof object, 'firstName'>; // { readonly lastName: "Someone surname"; readonly age: 227; }
        */
       export type Remove<Obj extends object, Name extends keyof Obj> = _Remove<Obj, Name>
-    
+
       /**
        * @description Sets or updates a property in the object, allowing more flexible type changes.
        * @export
@@ -105,7 +139,7 @@ declare global {
        * type Added = Set<typeof object, 'newProperty', 'The new property value'>;
        */
       export type Set<Obj extends object, Name extends PropertyKey, Value> = _Set<Obj, Name, Value>
-    
+
       /**
        * @description Updates the type of an existing property in the object.
        * @export
