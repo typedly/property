@@ -19,7 +19,6 @@ import {
 
 declare global {
   export namespace Typedly {
-
     export namespace Property {
       export namespace Deep {
         /**
