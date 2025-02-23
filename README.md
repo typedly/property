@@ -75,7 +75,7 @@ type Example1 = Add<typeof object, 'city', 'London'>;
   }
 */
 
-type Example2 = Add<typeof object, 'city', 'London', true>;
+type Example2 = Typedly.Property.Add<typeof object, 'city', 'London', true>;
 /*
   type Example2 = {
     readonly firstName: "Someone";
@@ -112,7 +112,7 @@ type Example1 = DeepAdd<Profile, 'user.age', number>;
   }
 */
 
-type Example2 = DeepAdd<Profile, 'user.address.city', string>;
+type Example2 = Typedly.Property.Deep.Add<Profile, 'user.address.city', string>; // The use of Typedly namespace.
 /*
   type Example2 = {
     user: {
