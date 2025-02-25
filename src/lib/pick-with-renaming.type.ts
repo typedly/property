@@ -14,5 +14,5 @@ export type PickWithRenaming<
   Names extends keyof Obj,
   Rename extends Record<string, string>
 > = {
-  [K in keyof Obj as K extends Names ? Rename[K & keyof Rename] : K]: Obj[K] // K extends Names ? Rename[K & keyof Rename] : Obj[K];
+  [Key in keyof Obj as Key extends Names ? Rename[Key & keyof Rename] : Key]: Obj[Key] // K extends Names ? Rename[K & keyof Rename] : Obj[K];
 };
