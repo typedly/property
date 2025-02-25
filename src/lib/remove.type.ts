@@ -1,5 +1,5 @@
 /**
- * @description Removes a property from an object type and ensures the final type is partially resolved.
+ * @description Wrapper of `Omit` to remove a property from an object type.
  * @export
  * @template {object} Obj The original object type.
  * @template {keyof Obj} Name The property key name to remove.
@@ -9,9 +9,5 @@
  */
 export type Remove<
   Obj extends object,
-  Name extends keyof Obj
-> = Omit<Obj, Name> extends infer Captured
-  ? Captured extends object
-    ? Captured
-    : never
-  : never;
+  Name extends keyof Obj,
+> = Omit<Obj, Name>;
